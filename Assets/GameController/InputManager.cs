@@ -28,7 +28,8 @@ public class InputManager : MonoBehaviour, GameInput.IPlayerActions
 
         if(context.started) 
         {
-            Actions.TargetingCowBoy?.Invoke(); 
+            Actions.TargetingCowBoy?.Invoke();
+            Actions.SpaceBarAction?.Invoke();
         }
 
         if (context.performed) 
@@ -38,12 +39,15 @@ public class InputManager : MonoBehaviour, GameInput.IPlayerActions
 
             Actions.GrowCircle?.Invoke();
             Debug.Log("GrowCircle");
+
+            
         }
 
 
         if (context.canceled) 
         {            
             Actions.StopGrowing?.Invoke();
+            Actions.ResumeSpeed?.Invoke();
 
             if (right)
             {
@@ -70,6 +74,9 @@ public static class Actions
     public static Action ChangeSprite; //This action will be triggered with space
     public static Action ReturnSprite; //This action will be triggered with space
     public static Action TargetingCowBoy;  //This action will be triggered with space
+    public static Action SpaceBarAction; //This action will be triggered with space
+    public static Action ResumeSpeed; //This action will be triggered with space
+
 
 }
 
